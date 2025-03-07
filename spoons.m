@@ -20,10 +20,25 @@ end
 
 disp(card_deck_2d_array)
 disp(player_array)
-end
+
 
 %for loop to determine what each player was dealt
 for each_player = 1:size(player_array, 1)
+       disp(['Player ', num2str(each_player)]);
     for each_card = 1:size(player_array, 2)
         card = player_array(each_player, each_card);
-        find(card_deck_ed_array, card)
+        [row, col] = find(card_deck_2d_array == card);
+        if row == 1
+            disp([num2str(col), ' of hearts'])
+        elseif row == 2
+           disp([num2str(col), ' of diamonds']) 
+        elseif row == 3
+            disp([num2str(col), ' of spades'])
+        elseif row ==4
+            disp([num2str(col), ' of clubs'])
+        end
+    end
+end
+end
+
+
