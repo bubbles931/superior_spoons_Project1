@@ -72,37 +72,37 @@ for num = 1:length(card_deck) %1:52
     end
 end
 disp(remaining_card)
-end
 
 %NAME EACH REMAINING CARD
 remaining_deck_array = reshape(remaining_card, 13, 4);
     for remaining_deck_row = 1:size(remaining_deck_array, 1)
        for remaining_deck_col = 1:size(remaining_deck_array, 2)
-           if ~(remaining_card == 0)
-        one_card = remaining_deck_array(remaining_deck_row, remaining_deck_col);
-        [row, col] = find(card_deck_2d_array == one_card)
-        if col == 1 
-            num = 'Ace';
-        elseif col == 11 
-            num = 'Jack';
-        elseif col == 12
-            num = 'Queen';
-        elseif col == 13
-            num = 'King';
-        else
-            num = num2str(col);
-        end
-        if row == 1
-            suit = 'Hearts';
-        elseif row == 2
-            suit = 'Diamonds';
-        elseif row == 3
-            suit = 'Spades';
-        elseif row == 4
-           suit = 'Clubs';
-        end
-        specific_cards = strcat(num, " of ",suit);
-        disp(specific_cards)
-         end
+           one_card = remaining_deck_array(remaining_deck_row, remaining_deck_col);
+           if ~(one_card == 0)
+            [row, col] = find(card_deck_2d_array == one_card);
+            if col == 1 
+                num = 'Ace';
+            elseif col == 11 
+                num = 'Jack';
+            elseif col == 12
+                num = 'Queen';
+            elseif col == 13
+                num = 'King';
+            else
+                num = num2str(col);
+            end
+            if row == 1
+                suit = 'Hearts';
+            elseif row == 2
+                suit = 'Diamonds';
+            elseif row == 3
+                suit = 'Spades';
+            elseif row == 4
+               suit = 'Clubs';
+            end
+            remaining_card_name = strcat(num, " of ",suit);
+            disp(remaining_card_name)
+           end
        end
     end
+end
