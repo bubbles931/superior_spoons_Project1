@@ -54,11 +54,6 @@ for each_player = 1:size(player_array, 1)
     end
 end
 
-%next time: 
-%start passing cards in each round
-%checking each card 
-%a card to either pass or keep using a boolean
-
 %FIND NUMBERS REMAINING IN 1:52 NOT DEALT 
 remaining_card = card_deck;
 for num = 1:length(card_deck) %1:52 
@@ -105,4 +100,10 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
            end
        end
     end
+
+%next time: 
+%displaying a card to player 1 
+%boolen either pass (0) or keep (1) using a boolean
+%conditional statement,if keep, then which card to remove
+
 end
