@@ -11,6 +11,10 @@ card_deck_2d_array = reshape(card_deck, 13, 4).';
 player_array = zeros(n_players, 4);
        
 indices = 1:4;
+
+%nitializing empty vector for stored card names
+stored_names = strings(0);
+
 %for loop to deal each player 4 cards
 for player = 1:n_players
     player_hand = shuffle_card_deck(indices);
@@ -49,7 +53,8 @@ for each_player = 1:size(player_array, 1)
         elseif row == 4
            suit = 'Clubs';
         end
-        specific_cards = strcat(num, " of ",suit);
+        card_num = num2str(player_array_col);
+        specific_cards = strcat(card_num, ". ", num, " of ",suit);
         disp(specific_cards)
     end
 end
@@ -96,14 +101,43 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
                suit = 'Clubs';
             end
             remaining_card_name = strcat(num, " of ",suit);
-            disp(remaining_card_name)
+            stored_names(end+1) = (remaining_card_name);
+            
            end
        end
+       
     end
+disp(stored_names)
 
-%next time: 
-%displaying a card to player 1 
-%boolen either pass (0) or keep (1) using a boolean
-%conditional statement,if keep, then which card to remove
+
+%individualizing players using while loop
+current_player = 1;
+
+while current_player ~= n_players
+%displaying a card to player 1
+    index_stored_names = randi([1 length(stored_names)]);
+    current_card = stored_names(index_stored_names);
+    disp(current_card);
+    %user input either pass or keep
+    prompt = "pass or keep?";
+    txt = input(prompt, 's');
+   %conditional statement,if keep, then which card to remove
+    if strcmp(txt, 'pass')
+        while strcmp(txt, 'pass')
+           index_stored_names = randi([1 length(stored_names)]);
+           current_card = stored_names(index_stored_names);
+           disp(current_card);
+           prompt = "pass or keep?";
+           txt = input(prompt, 's');
+        end
+    elseif strcmp(txt, 'keep')
+        prompt = 'Which card would you like to discard? (';
+        txt = input(prompt, 's');
+    else
+
+    end
+    current_player = current_player + 1;
+end
+
 
 end
