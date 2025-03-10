@@ -76,11 +76,10 @@ end
 
 %NAME EACH REMAINING CARD
 remaining_deck_array = reshape(remaining_card, 13, 4);
-    for remaining_deck_row = 1:size(remaining_deck_array, 1)
-       for remaining_deck_col = 1:size(remaining_deck_array, 2)
-           if ~(remaining_card == 0)
-        one_card = remaining_deck_array(remaining_deck_row, remaining_deck_col);
-        [row, col] = find(card_deck_2d_array == one_card)
+    for remaining_deck_row = 1:size(remaining_deck_array, 2)
+        if ~remaining_card == 0
+        one_card = player_array(each_player, player_array_col);
+        [row, col] = find(card_deck_2d_array == one_card);
         if col == 1 
             num = 'Ace';
         elseif col == 11 
@@ -103,6 +102,6 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
         end
         specific_cards = strcat(num, " of ",suit);
         disp(specific_cards)
-         end
-       end
     end
+end
+
