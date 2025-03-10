@@ -141,3 +141,8 @@ end
 
 
 end
+
+%next time
+%fix pass or keep so every time a card is drawn we update the stored_names
+%list
+%finish keep and pass

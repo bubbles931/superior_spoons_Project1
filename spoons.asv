@@ -53,7 +53,8 @@ for each_player = 1:size(player_array, 1)
         elseif row == 4
            suit = 'Clubs';
         end
-        specific_cards = strcat(num, " of ",suit);
+        card_num = num2str(player_array_col);
+        specific_cards = strcat(card_num, ". ", num, " of ",suit);
         disp(specific_cards)
     end
 end
@@ -129,7 +130,10 @@ while current_player ~= n_players
            prompt = "pass or keep?";
            txt = input(prompt, 's');
         end
-    elseif 
+    elseif strcmp(txt, 'keep')
+        prompt = 'Which card would you like to discard? (';
+        txt = input(prompt, 's');
+    else
 
     end
     current_player = current_player + 1;
@@ -137,3 +141,6 @@ end
 
 
 end
+
+%next time
+%fix pass or ke
