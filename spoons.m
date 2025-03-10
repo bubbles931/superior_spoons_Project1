@@ -61,15 +61,13 @@ end
 %checking each card 
 %a card to either pass or keep using a boolean
 
-remaining_card = [];
-index = 1;
+remaining_card = card_deck;
 for num = 1:length(card_deck) 
     for each_player = 1:size(player_array, 1)
         for player_array_col = 1:size(player_array, 2)
             one_card = player_array(each_player, player_array_col);
-            if ~(one_card == num)
-                remaining_card(end+1) = num;
-                index = index + 1;
+            if (one_card == num)
+                remaining_card(num) = 0;
             end
         end
     end
