@@ -9,8 +9,7 @@ card_deck_2d_array = reshape(card_deck, 13, 4).';
 
 %a 2d array to help keep track of all the cards each player has
 player_array = zeros(n_players, 4);
-
-        
+       
 indices = 1:4;
 %for loop to deal each player 4 cards
 for player = 1:n_players
@@ -42,15 +41,15 @@ for each_player = 1:size(player_array, 1)
             num = num2str(col);
         end
         if row == 1
-            suit = 'hearts';
+            suit = 'Hearts';
         elseif row == 2
-            suit = 'diamonds';
+            suit = 'Diamonds';
         elseif row == 3
-            suit = 'spades';
+            suit = 'Spades';
         elseif row == 4
-           suit = 'clubs';
+           suit = 'Clubs';
         end
-        specific_cards = strcat(num, ' of', suit);
+        specific_cards = strcat(num, " of ",suit);
         disp(specific_cards)
     end
 end
@@ -61,4 +60,19 @@ end
 %start passing cards in each round
 %checking each card 
 %a card to either pass or keep using a boolean
+
+remaining_card = [];
+index = 1;
+for num = 1:length(card_deck) 
+    for each_player = 1:size(player_array, 1)
+        for player_array_col = 1:size(player_array, 2)
+            one_card = player_array(each_player, player_array_col);
+            if ~(one_card == num)
+                remaining_card(end+1) = num;
+                index = index + 1;
+            end
+        end
+    end
+end
+disp(remaining_card)
 end
