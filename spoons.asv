@@ -58,10 +58,23 @@ for each_player = 1:size(player_array, 1)
         card_num = num2str(player_array_col);
         specific_cards = strcat(card_num, ". ", num, " of ",suit);
         player_array_card_names(end+1) = specific_cards;
-        player_array_card_names(reshape())
         disp(specific_cards)
+        
     end
 end
+
+index = 1;
+player_array_card_names_cell = cell(n_players, 4);
+
+for itr = 1:size(player_array, 1)
+    for i = 1:size(player_array, 2)
+        player_array_card_names_cell{itr, i} = player_array_card_names(index);
+        index = index + 1;
+    end
+end
+disp(player_array_card_names_cell)
+%player_array_card_names = (reshape(player_array_card_names, size(player_array, 1), size(player_array, 2)));
+%disp(player_array_card_names)
 
 %FIND NUMBERS REMAINING IN 1:52 NOT DEALT 
 remaining_card = card_deck;
@@ -143,7 +156,7 @@ while current_player ~= n_players
         x = input(prompt);
         discard_card = player_array(current_player, x);
 
-        loose_cards(end+1) = 
+      %loose_cards(end+1) = 
 
        
 

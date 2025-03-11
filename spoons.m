@@ -62,7 +62,16 @@ for each_player = 1:size(player_array, 1)
         
     end
 end
-%cellstr(player_array_card_names);
+
+index = 2;
+player_array_card_names_cell = cell(n_players, 4);
+for itr = 1:size(player_array, 1)
+    for i = 1:size(player_array, 2)
+        player_array_card_names_cell{itr, i} = player_array_card_names(index);
+        index = index + 1;
+    end
+end
+disp(player_array_card_names_cell)
 %player_array_card_names = (reshape(player_array_card_names, size(player_array, 1), size(player_array, 2)));
 %disp(player_array_card_names)
 
