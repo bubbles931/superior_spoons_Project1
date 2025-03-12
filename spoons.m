@@ -168,8 +168,9 @@ while current_player <= n_players
        wtv = strcat(loose_cards, "test");
        disp(wtv)
     end
-    while current_player ~= 1
+    while current_player ~= 1 && current_player <= n_players
         disp(strcat("Player ", num2str(current_player), "'s Turn"))
+        disp(loose_cards);
         for indx = 1:length(loose_cards)
             current_card = loose_cards(indx);
             disp(current_card);
@@ -181,20 +182,21 @@ while current_player <= n_players
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
                 loose_cards(end+1) = current_card;
-                while strcmp(txt, 'pass')
-                   index_stored_names = randi([1 length(stored_names)]);
-                   current_card = stored_names(index_stored_names);
-                   disp(current_card);
-                   prompt = "pass or keep?";
-                   txt = input(prompt, 's');
-                   loose_cards(end+1) = current_card;
-                end
+
+                %while strcmp(txt, 'pass')
+                 %  index_stored_names = randi([1 length(stored_names)]);
+                  % current_card = stored_names(index_stored_names);
+                  % disp(current_card);
+                  % prompt = "pass or keep?";
+                  % txt = input(prompt, 's');
+                  % loose_cards(end+1) = current_card;
+                %end
             elseif strcmp(txt, 'keep')
                 prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
                 x = input(prompt);
                 discard_card = player_array_card_names_cell{current_player, x};
                 loose_cards(end+1) = discard_card;
-                player_array_card_names_cell{current_player, x} = current_card;
+                current_card = player_array_card_names_cell{current_player, x};
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
             else
@@ -202,8 +204,9 @@ while current_player <= n_players
                txt = input(prompt, 's');
             end
         end
-        current_player = current_player +1;
+       current_player = current_player +1; 
     end
+    current_player = 1;
 end
 end
 
