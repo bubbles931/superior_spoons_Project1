@@ -129,47 +129,81 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
 current_player = 1;
 
 loose_cards = strings(0);
-while current_player ~= n_players
+disp(loose_cards);
+while current_player <= n_players
+    while current_player == 1
+        bitch = strcat("Player ", num2str(current_player), "'s Turn");
+        disp(bitch)
 %displaying a card to player 1
-    index_stored_names = randi([1 length(stored_names)]);
-    current_card = stored_names(index_stored_names);
-    disp(current_card);
-    stored_names(index_stored_names) = [];
-        %remove current card from stored names
-    %user input either pass or keep
-    prompt = "pass or keep?";
-    txt = input(prompt, 's');
-   %conditional statement,if keep, then which card to remove
-    if strcmp(txt, 'pass')
-        loose_cards(end+1) = current_card;
-        while strcmp(txt, 'pass')
+        index_stored_names = randi([1 length(stored_names)]);
+        current_card = stored_names(index_stored_names);
+        ss = strcat(current_card, "ya mama");
+        disp(ss)
+        stored_names(index_stored_names) = [];
+            %remove current card from stored names
+        %user input either pass or keep
+        prompt = "pass or keep?";
+        txt = input(prompt, 's');
+       %conditional statement,if keep, then which card to remove
+        if strcmp(txt, 'pass')
+           loose_cards(end+1) = current_card;
            index_stored_names = randi([1 length(stored_names)]);
            current_card = stored_names(index_stored_names);
-           disp(current_card);
-           prompt = "pass or keep?";
+           ii = strcat(current_card, "hhhhh");
+           disp(ii)
+        elseif strcmp(txt, 'keep')
+            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
+            x = input(prompt);
+            discard_card = player_array_card_names_cell{current_player, x};
+            loose_cards(end+1) = discard_card;
+            player_array_card_names_cell{current_player, x} = current_card;
+                %swap current card to loose card, loose card goes into
+                %loose_card; update player_array
+        else
+           prompt = "Ensure that you type the command specificially: again, pass or keep?";
            txt = input(prompt, 's');
-           loose_cards(end+1) = current_card;
         end
-    elseif strcmp(txt, 'keep')
-        prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-        x = input(prompt);
-        discard_card = player_array(current_player, x);
-
-      %loose_cards(end+1) = 
-
-       
-
-
-            %swap current card to loose card, loose card goes into
-            %loose_card; update player_array
-    else
-       prompt = "Ensure that you type the command specificially: again, pass or keep?";
-       txt = input(prompt, 's');
+       current_player = current_player + 1;
+       disp(current_player)
+       wtv = strcat(loose_cards, "test");
+       disp(wtv)
     end
-    current_player = current_player + 1;
+    while current_player ~= 1
+        disp(strcat("Player ", num2str(current_player), "'s Turn"))
+        for indx = 1:length(loose_cards)
+            current_card = loose_cards(indx);
+            disp(current_card);
+            loose_cards(indx) = [];
+            %remove current card from stored names
+            %user input either pass or keep
+            prompt = "pass or keep?";
+            txt = input(prompt, 's');
+           %conditional statement,if keep, then which card to remove
+            if strcmp(txt, 'pass')
+                loose_cards(end+1) = current_card;
+                while strcmp(txt, 'pass')
+                   index_stored_names = randi([1 length(stored_names)]);
+                   current_card = stored_names(index_stored_names);
+                   disp(current_card);
+                   prompt = "pass or keep?";
+                   txt = input(prompt, 's');
+                   loose_cards(end+1) = current_card;
+                end
+            elseif strcmp(txt, 'keep')
+                prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
+                x = input(prompt);
+                discard_card = player_array_card_names_cell{current_player, x};
+                loose_cards(end+1) = discard_card;
+                player_array_card_names_cell{current_player, x} = current_card;
+                    %swap current card to loose card, loose card goes into
+                    %loose_card; update player_array
+            else
+               prompt = "Ensure that you type the command specificially: again, pass or keep?";
+               txt = input(prompt, 's');
+            end
+        end
+    end
 end
-
-
 end
 
 % make new array with cards in play
