@@ -124,7 +124,7 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
        
     end
 
-
+    %function [winning_hand] = passing_cards(n_players, stored)
 %individualizing players using while loop
 current_player = 1;
 
@@ -202,6 +202,7 @@ while current_player <= n_players
                txt = input(prompt, 's');
             end
         end
+        current_player = current_player +1;
     end
 end
 end

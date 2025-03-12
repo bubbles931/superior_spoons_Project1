@@ -124,19 +124,21 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
        
     end
 
-
+    function [winning_hand] = passing_cards(n_players, stored)
 %individualizing players using while loop
 current_player = 1;
 
 loose_cards = strings(0);
 disp(loose_cards);
 while current_player <= n_players
-    disp(strcat("Player ", num2str(current_player), "'s Turn"))
     while current_player == 1
+        bitch = strcat("Player ", num2str(current_player), "'s Turn");
+        disp(bitch)
 %displaying a card to player 1
         index_stored_names = randi([1 length(stored_names)]);
         current_card = stored_names(index_stored_names);
-        disp(current_card)
+        ss = strcat(current_card, "ya mama");
+        disp(ss)
         stored_names(index_stored_names) = [];
             %remove current card from stored names
         %user input either pass or keep
@@ -147,7 +149,8 @@ while current_player <= n_players
            loose_cards(end+1) = current_card;
            index_stored_names = randi([1 length(stored_names)]);
            current_card = stored_names(index_stored_names);
-           disp(current_card);
+           ii = strcat(current_card, "hhhhh");
+           disp(ii)
         elseif strcmp(txt, 'keep')
             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
             x = input(prompt);
@@ -161,12 +164,14 @@ while current_player <= n_players
            txt = input(prompt, 's');
         end
        current_player = current_player + 1;
+       disp(current_player)
        wtv = strcat(loose_cards, "test");
        disp(wtv)
     end
     while current_player ~= 1
+        disp(strcat("Player ", num2str(current_player), "'s Turn"))
         for indx = 1:length(loose_cards)
-            loose_cards(indx) = current_card;
+            current_card = loose_cards(indx);
             disp(current_card);
             loose_cards(indx) = [];
             %remove current card from stored names
