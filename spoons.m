@@ -1,5 +1,25 @@
 function [winner] = spoons(n_players)
 
+%Subfunction for connecting players on server
+    function [players, server] = spoons_server(n_players)
+        port = 55000;
+        server = tcpserver("0.0.0.0", port);
+        added_players = [];
+        server_int = strcat("On port", num2str(port), "the server started", ". Waiting for other players.");
+        disp(server_int);
+        
+        while length(added_players) < n_players
+            if isprop(server, 'ConnectedClients')
+                connect_players = server.ConnectedClients;
+                for i = 1:length(connected_players)
+                    added_players(end+1) = connected(i);
+                    players_in_game = strcat("Player", num2str(length(added_players), " connected."));
+                    disp(players_in_game);
+                end
+            end
+        end
+    end
+
 % initializing deck of cards
 card_deck = [1:52];
 shuffle_card_deck = randperm(52);

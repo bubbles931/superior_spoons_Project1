@@ -1,5 +1,20 @@
 function [winner] = spoons(n_players)
 
+%Subfunction for connecting players on server
+    function [players, server] = spoons_server(n_players)
+        port = 55000;
+        server = tcpserver("0.0.0.0", port);
+        added_players = [];
+        server_int = strcat("On port", num2str(port), "the server started", ". Waiting for other players.");
+        disp(server_int);
+        
+        while length(added_players) < n_players
+            if isprop(server, 'ConnectedClients')
+                connect_players = server.ConnectedClients;
+                for i = 1:length(connected_players)
+                    added_players(end+1) = connected(i);
+                    players_in_game = strcat("Player", num2str(length(added_players)))
+
 % initializing deck of cards
 card_deck = [1:52];
 shuffle_card_deck = randperm(52);
@@ -60,7 +75,8 @@ for each_player = 1:size(player_array, 1)
         
     end
 end
-disp (player_array_card_names)
+
+%ARRAY OF PLAYER CARD NAMES
 index = 2;
 player_array_card_names_cell = cell(n_players, 4);
 for itr = 1:size(player_array, 1)
@@ -70,8 +86,6 @@ for itr = 1:size(player_array, 1)
     end
 end
 disp(player_array_card_names_cell)
-%player_array_card_names = (reshape(player_array_card_names, size(player_array, 1), size(player_array, 2)));
-%disp(player_array_card_names)
 
 %FIND NUMBERS REMAINING IN 1:52 NOT DEALT 
 remaining_card = card_deck;
@@ -120,7 +134,6 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
     end
 
 %individualizing players using while loop
-
 current_player = 1;
 loose_cards = strings(0);
 discard_pile = strings(0);
@@ -242,6 +255,8 @@ end
 %next time:
 %checking player_array_card_names_cell for 4 of a kind
 %coding spoons logic
-%server
+%creating a server that connects multi players for one game
 %looping code for n_players = n_players - 1
-%   figure out whihc player didnt type spoon
+%   figure out which player didn't type spoon to kick out game
+
+%%test
