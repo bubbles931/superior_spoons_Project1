@@ -195,7 +195,7 @@ while current_player <= n_players
                 x = input(prompt);
                 discard_card = player_array_card_names_cell{current_player, x};
                 loose_cards(end+1) = discard_card;
-                current_card = player_array_card_names_cell{current_player, x};
+                player_array_card_names_cell{current_player, x} = current_card;
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
                 disp(player_array_card_names_cell)
