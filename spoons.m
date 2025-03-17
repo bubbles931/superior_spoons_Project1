@@ -124,6 +124,8 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
 current_player = 1;
 loose_cards = strings(0);
 discard_pile = strings(0);
+split_card_vec = zeros(12);
+num_card_vec = [];
 while current_player <= n_players
     while current_player == 1
         if isempty(stored_names)
@@ -159,14 +161,20 @@ while current_player <= n_players
         elseif strcmp(txt, 'spoons')
                alleged_winner_cards = player_array_card_names_cell(current_player,:);
                for card = 1:length(alleged_winner_cards)
-                   strs = strsplit(card);
-               if strs(1) == strs(4) && strs(4) == strs(7) == strs(10)
-                   winner = true;
-                   disp('Please type exit and start this game with n_players - 1');
-               else
-                   disp('LOSERRRR, pass laptop');
-                   continue;
+                   strs = strsplit(alleged_winner_cards{card}, ' ');
+                   disp(strs)
+                   for index = 1:length(strs)
+                    split_card_vec(index) = strs(index);
+                   end
+                   num_card_vec(end+1) = split_card_vec(1);
                end
+               disp(split_card_vec)
+               if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
+                   winner = true;
+                   disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
+               else
+                   disp('Boy you know damn well you do not have four of a kind, try again');
+                   break;
                end
         elseif strcmp(txt, 'exit')
             return;
