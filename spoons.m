@@ -243,3 +243,5 @@ end
 %creating a server that connects multi players for one game
 %looping code for n_players = n_players - 1
 %   figure out which player didn't type spoon to kick out game
+
+%%test
