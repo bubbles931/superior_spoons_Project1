@@ -254,5 +254,7 @@ end
 end
 
 %next time:
-%checking player_array_card_names_cell for 4 of a kind
-%coding spoons logic
+%checking player_array_card_names_cell for 4 of a kind for all players
+%check if spoons work
+%name winner
+%adding instructions and making display in command window look better
