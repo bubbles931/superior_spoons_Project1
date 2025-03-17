@@ -140,7 +140,7 @@ while current_player <= n_players
         stored_names(index_stored_names) = [];
             %remove current card from stored names
         %user input either pass or keep
-        prompt = "pass or keep?";
+        prompt = "pass or keep? If you have four of the same number, type spoons. ";
         txt = input(prompt, 's');
        %conditional statement,if keep, then which card to remove
         if strcmp(txt, 'pass')
@@ -156,20 +156,18 @@ while current_player <= n_players
             player_array_card_names_cell{current_player, x} = current_card;
                 %swap current card to loose card, loose card goes into
                 %loose_card; update player_array
-                if strcmp(txt, 'spoons')
-                   alleged_winner_cards = player_array_card_names_cell(current_player,:);
-                   for card = 1:length(alleged_winner_cards)
-                       strs = strsplit(card);
-                   if strs(1) == strs(4) && strs(4) == strs(7) == strs(10)
-                       winner = true;
-                       disp('Please type exit and start this game with n_players - 1');
-                   else
-                       disp('LOSERRRR, pass laptop');
-                       continue;
-                   end
-                   end
-
-                end
+        elseif strcmp(txt, 'spoons')
+               alleged_winner_cards = player_array_card_names_cell(current_player,:);
+               for card = 1:length(alleged_winner_cards)
+                   strs = strsplit(card);
+               if strs(1) == strs(4) && strs(4) == strs(7) == strs(10)
+                   winner = true;
+                   disp('Please type exit and start this game with n_players - 1');
+               else
+                   disp('LOSERRRR, pass laptop');
+                   continue;
+               end
+               end
         elseif strcmp(txt, 'exit')
             return;
         else
@@ -232,7 +230,7 @@ while current_player <= n_players
                 prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
                 x = input(prompt);
                 discard_card = player_array_card_names_cell{current_player, x};
-                discard(end+1) = discard_card;
+                discard_pile(end+1) = discard_card;
                 current_card = player_array_card_names_cell{current_player, x};
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
