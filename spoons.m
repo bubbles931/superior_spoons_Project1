@@ -196,7 +196,7 @@ while current_player <= n_players
             loose_cards(indx) = [];
             %remove current card from stored names
             %user input either pass or keep
-            prompt = "pass or keep?";
+            prompt = "pass or keep? If you have four of the same number, type spoons. ";
             txt = input(prompt, 's');
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
@@ -210,6 +210,24 @@ while current_player <= n_players
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
                 disp(player_array_card_names_cell)
+            elseif strcmp(txt, 'spoons')
+               alleged_winner_cards = player_array_card_names_cell(current_player,:);
+               for card = 1:length(alleged_winner_cards)
+                   strs = strsplit(alleged_winner_cards{card}, ' ');
+                   disp(strs)
+                   for index = 1:length(strs)
+                    split_card_vec(index) = strs(index);
+                   end
+                   num_card_vec(end+1) = split_card_vec(1);
+               end
+               disp(split_card_vec)
+               if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
+                   winner = true;
+                   disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
+               else
+                   disp('Boy you know damn well you do not have four of a kind, try again');
+                   break;
+               end
             elseif strcmp(txt, 'exit')
                 return;
             else
@@ -229,7 +247,7 @@ while current_player <= n_players
             loose_cards(indx) = [];
             %remove current card from stored names
             %user input either pass or keep
-            prompt = "pass or keep?";
+            prompt = "pass or keep? If you have four of the same number, type spoons. ";
             txt = input(prompt, 's');
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
@@ -243,6 +261,24 @@ while current_player <= n_players
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
                disp(player_array_card_names_cell)
+            elseif strcmp(txt, 'spoons')
+               alleged_winner_cards = player_array_card_names_cell(current_player,:);
+               for card = 1:length(alleged_winner_cards)
+                   strs = strsplit(alleged_winner_cards{card}, ' ');
+                   disp(strs)
+                   for index = 1:length(strs)
+                    split_card_vec(index) = strs(index);
+                   end
+                   num_card_vec(end+1) = split_card_vec(1);
+               end
+               disp(split_card_vec)
+               if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
+                   winner = true;
+                   disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
+               else
+                   disp('Boy you know damn well you do not have four of a kind, try again');
+                   break;
+               end
             elseif strcmp(txt, 'exit')
                 return;
             else
@@ -262,6 +298,8 @@ end
 end
 
 %next time:
+%fix so when player says spoons it restarts their turn instead of going
+%back to player 1
 %checking player_array_card_names_cell for 4 of a kind for all players
 %check if spoons work
 %name winner
