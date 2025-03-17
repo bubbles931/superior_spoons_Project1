@@ -60,7 +60,8 @@ for each_player = 1:size(player_array, 1)
         
     end
 end
-disp (player_array_card_names)
+
+%ARRAY OF PLAYER CARD NAMES
 index = 2;
 player_array_card_names_cell = cell(n_players, 4);
 for itr = 1:size(player_array, 1)
@@ -70,8 +71,6 @@ for itr = 1:size(player_array, 1)
     end
 end
 disp(player_array_card_names_cell)
-%player_array_card_names = (reshape(player_array_card_names, size(player_array, 1), size(player_array, 2)));
-%disp(player_array_card_names)
 
 %FIND NUMBERS REMAINING IN 1:52 NOT DEALT 
 remaining_card = card_deck;
@@ -120,7 +119,6 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
     end
 
 %individualizing players using while loop
-
 current_player = 1;
 loose_cards = strings(0);
 discard_pile = strings(0);
@@ -181,15 +179,6 @@ while current_player <= n_players
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
                 loose_cards(end+1) = current_card;
-
-                %while strcmp(txt, 'pass')
-                 %  index_stored_names = randi([1 length(stored_names)]);
-                  % current_card = stored_names(index_stored_names);
-                  % disp(current_card);
-                  % prompt = "pass or keep?";
-                  % txt = input(prompt, 's');
-                  % loose_cards(end+1) = current_card;
-                %end
             elseif strcmp(txt, 'keep')
                 prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
                 x = input(prompt);
@@ -223,15 +212,6 @@ while current_player <= n_players
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
                 discard_pile(end+1) = current_card;
-
-                %while strcmp(txt, 'pass')
-                 %  index_stored_names = randi([1 length(stored_names)]);
-                  % current_card = stored_names(index_stored_names);
-                  % disp(current_card);
-                  % prompt = "pass or keep?";
-                  % txt = input(prompt, 's');
-                  % loose_cards(end+1) = current_card;
-                %end
             elseif strcmp(txt, 'keep')
                 prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
                 x = input(prompt);
@@ -257,18 +237,9 @@ while current_player <= n_players
 end
 end
 
-% make new array with cards in play
-
-
-% update player array and stored names if kept 
-% go through the indices of this new array for the rest of the players to use
-% once the player array and stored names is empty, make feeder use new array
-
-%next time
-%fix pass or keep so every time a card is drawn we update the stored_names
-%finish the feeder code, worry about trash and intermediate layer
-%list
-%finish keep and pass
-
-%display players hand each turn to compare if they should keep or pass card
-% have to test if player array or player array names gets updated 
+%next time:
+%checking player_array_card_names_cell for 4 of a kind
+%coding spoons logic
+%creating a server that connects multi players for one game
+%looping code for n_players = n_players - 1
+%   figure out which player didn't type spoon to kick out game
