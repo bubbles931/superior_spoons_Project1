@@ -8,9 +8,10 @@ function [winner] = spoons(n_players)
         server_int = strcat("On port ", num2str(port), " the server started", ". Waiting for other players.");
         disp(server_int);
         
-        while length(added_players) < n_players
-            if isprop(server, 'ConnectedClients')
+        while numel(added_players) < n_players
+            %if isprop(server, 'ConnectedClients')
                 connected_players = server.ConnectedClients;
+                disp(connected_players);
                 for i = 1:length(connected_players)
                     for j = 1: numel(added_players)
                         if ~isequal(added_players{j}, connected_players(i))
@@ -23,7 +24,7 @@ function [winner] = spoons(n_players)
 
             end
         end
-    end
+    %end
 
 spoons_server(n_players);
 
