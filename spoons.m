@@ -20,6 +20,8 @@ function [winner] = spoons(n_players)
         end
     end
 
+spoons_server(n_players);
+
 % initializing deck of cards
 card_deck = [1:52];
 shuffle_card_deck = randperm(52);
