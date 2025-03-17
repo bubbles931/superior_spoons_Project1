@@ -22,9 +22,6 @@ for player = 1:n_players
     indices = indices + 4;
 end
 
-disp(card_deck_2d_array)
-disp(player_array)
-
 suit = '';
 num = '';
 
@@ -56,13 +53,14 @@ for each_player = 1:size(player_array, 1)
            suit = 'Clubs';
         end
         card_num = num2str(player_array_col);
-        specific_cards = strcat(card_num, ". ", num, " of ",suit);
+        specific_cards = strcat(num, " of ",suit);
         player_array_card_names(end+1) = specific_cards;
-        disp(specific_cards)
+        display_specific_cards = strcat(card_num, ". ", num, " of ",suit);
+        disp(display_specific_cards)
         
     end
 end
-
+disp (player_array_card_names)
 index = 2;
 player_array_card_names_cell = cell(n_players, 4);
 for itr = 1:size(player_array, 1)
@@ -87,7 +85,6 @@ for num = 1:length(card_deck) %1:52
         end
     end
 end
-disp(remaining_card)
 
 %NAME EACH REMAINING CARD
 remaining_deck_array = reshape(remaining_card, 13, 4);
@@ -118,28 +115,28 @@ remaining_deck_array = reshape(remaining_card, 13, 4);
             end
             remaining_card_name = strcat(num, " of ",suit);
             stored_names(end+1) = (remaining_card_name);
-            
            end
        end
-       
     end
 
-    %function [winning_hand] = passing_cards(n_players, stored)
 %individualizing players using while loop
-current_player = 1;
 
+current_player = 1;
 loose_cards = strings(0);
-discard = strings(0);
-disp(loose_cards);
+discard_pile = strings(0);
 while current_player <= n_players
     while current_player == 1
-        bitch = strcat("Player ", num2str(current_player), "'s Turn");
-        disp(bitch)
+        if isempty(stored_names)
+            stored_names = discard_pile;
+        end
+        curr_player = strcat("Player ", num2str(current_player), "'s Turn");
+        disp(curr_player)
+        disp("Current Hand");
+        disp(strcat(player_array_card_names_cell(current_player,:)));
 %displaying a card to player 1
         index_stored_names = randi([1 length(stored_names)]);
         current_card = stored_names(index_stored_names);
-        ss = strcat(current_card, "ya mama");
-        disp(ss)
+        disp(current_card)
         stored_names(index_stored_names) = [];
             %remove current card from stored names
         %user input either pass or keep
@@ -150,8 +147,7 @@ while current_player <= n_players
            loose_cards(end+1) = current_card;
            index_stored_names = randi([1 length(stored_names)]);
            current_card = stored_names(index_stored_names);
-           ii = strcat(current_card, "hhhhh");
-           disp(ii)
+           disp(current_card)
         elseif strcmp(txt, 'keep')
             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
             x = input(prompt);
@@ -160,18 +156,20 @@ while current_player <= n_players
             player_array_card_names_cell{current_player, x} = current_card;
                 %swap current card to loose card, loose card goes into
                 %loose_card; update player_array
+        elseif strcmp(txt, 'exit')
+            return;
         else
            prompt = "Ensure that you type the command specificially: again, pass or keep?";
            txt = input(prompt, 's');
         end
        current_player = current_player + 1;
        disp(current_player)
-       wtv = strcat(loose_cards, "test");
-       disp(wtv)
+       disp(loose_cards)
     end
     while current_player ~= 1 && current_player < n_players
         disp(strcat("Player ", num2str(current_player), "'s Turn"))
-        disp(loose_cards);
+        disp("Current Hand");
+        disp(strcat(player_array_card_names_cell(current_player, :)));
         for indx = 1:length(loose_cards)
             current_card = loose_cards(indx);
             disp(current_card);
@@ -200,6 +198,9 @@ while current_player <= n_players
                 current_card = player_array_card_names_cell{current_player, x};
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
+                disp(player_array_card_names_cell)
+            elseif strcmp(txt, 'exit')
+                return;
             else
                prompt = "Ensure that you type the command specificially: again, pass or keep?";
                txt = input(prompt, 's');
@@ -208,8 +209,9 @@ while current_player <= n_players
        current_player = current_player +1; 
     end
     while current_player == n_players
-         disp(strcat("Player ", num2str(current_player), "'s Turn"))
-        disp(loose_cards);
+        disp(strcat("Player ", num2str(current_player), "'s Turn"))
+        disp("Current Hand");
+        disp(strcat(player_array_card_names_cell(current_player, :)));
         for indx = 1:length(loose_cards)
             current_card = loose_cards(indx);
             disp(current_card);
@@ -220,7 +222,7 @@ while current_player <= n_players
             txt = input(prompt, 's');
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
-                discard(end+1) = current_card;
+                discard_pile(end+1) = current_card;
 
                 %while strcmp(txt, 'pass')
                  %  index_stored_names = randi([1 length(stored_names)]);
@@ -238,6 +240,9 @@ while current_player <= n_players
                 current_card = player_array_card_names_cell{current_player, x};
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
+               disp(player_array_card_names_cell)
+            elseif strcmp(txt, 'exit')
+                return;
             else
                prompt = "Ensure that you type the command specificially: again, pass or keep?";
                txt = input(prompt, 's');
@@ -245,8 +250,10 @@ while current_player <= n_players
         end
         current_player = 1;
     end
-        
-    
+    if size(index_stored_names) == 0
+        index_stored_names = discard_pile;
+        discard_pile = strings(0);
+    end
 end
 end
 
@@ -263,3 +270,5 @@ end
 %list
 %finish keep and pass
 
+%display players hand each turn to compare if they should keep or pass card
+% have to test if player array or player array names gets updated 
