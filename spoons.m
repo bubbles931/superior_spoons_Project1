@@ -240,12 +240,8 @@ while current_player <= n_players
                 discard_card = player_array_card_names_cell{current_player, x};
                 loose_cards(end+1) = discard_card;
                 player_array_card_names_cell{current_player, x} = current_card;
-<<<<<<< HEAD
-                disp(player_array_card_names_cell)
-=======
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
->>>>>>> c6f1411e73820c98fca672a2e396f8912f571f60
                 fprintf('\n \n \n')
             elseif strcmp(txt, 'spoons')
                alleged_winner_cards = player_array_card_names_cell(current_player,:);
@@ -259,7 +255,7 @@ while current_player <= n_players
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    % player wins! game ends
                    winner = true;
-                   disp('Winner Winner Chicken Dinner ^_^!!');
+                   ('Winner Winner Chicken Dinner ^_^!!');
                    return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
