@@ -170,7 +170,8 @@ while current_player <= n_players
                    num_card_vec(end+1) = split_card_vec(1);
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
-                   prompt = 'Winner Winner Chicken Dinner ^_^!! Please type exit to start the game over';
+                   prompt = 'Winner Winner Chicken Dinner ^_^!!';
+                   winner = true;
                    return;
                    
                else

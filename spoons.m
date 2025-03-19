@@ -30,7 +30,6 @@ num = '';
 player_array_card_names = string(0);
 %for loop to determine what each player was dealt
 for each_player = 1:size(player_array, 1)
-       disp(['Player ', num2str(each_player)]);
     for player_array_col = 1:size(player_array, 2)
         one_card = player_array(each_player, player_array_col);
         [row, col] = find(card_deck_2d_array == one_card);
@@ -57,9 +56,7 @@ for each_player = 1:size(player_array, 1)
         card_num = num2str(player_array_col);
         specific_cards = strcat(num, " of ",suit);
         player_array_card_names(end+1) = specific_cards;
-        display_specific_cards = strcat(card_num, ". ", num, " of ",suit);
-        disp(display_specific_cards)
-        
+        display_specific_cards = strcat(card_num, ". ", num, " of ",suit);        
     end
 end
 
@@ -72,7 +69,6 @@ for itr = 1:size(player_array, 1)
         index = index + 1;
     end
 end
-disp(player_array_card_names_cell)
 
 %FIND NUMBERS REMAINING IN 1:52 NOT DEALT 
 remaining_card = card_deck;
@@ -171,6 +167,7 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    prompt = 'Winner Winner Chicken Dinner ^_^!!';
+                   winner = true;
                    return;
                    
                else
@@ -344,14 +341,4 @@ while current_player <= n_players
         discard_pile = strings(0);
     end
 end
-
-
 end
-
-%next time:
-%fix so when player says spoons it restarts their turn instead of going
-%back to player 1
-%checking player_array_card_names_cell for 4 of a kind for all players
-%check if spoons work
-%name winner
-%adding instructions and making display in command window look better
