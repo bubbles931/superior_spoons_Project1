@@ -164,11 +164,13 @@ while current_player <= n_players
                alleged_winner_cards = player_array_card_names_cell(current_player,:);
                for card = 1:length(alleged_winner_cards)
                    strs = strsplit(alleged_winner_cards{card}, ' ');
+                   disp(strs)
                    for index = 1:length(strs)
                     split_card_vec(index) = strs(index);
                    end
                    num_card_vec(end+1) = split_card_vec(1);
                end
+               disp(split_card_vec);
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
@@ -176,22 +178,22 @@ while current_player <= n_players
                else
                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
-                    %conditional statement,if keep, then which card to remove
+                     %conditional statement,if keep, then which card to remove
                         if strcmp(txt, 'pass')
-                            loose_cards(end+1) = current_card;
-                            index_stored_names = randi([1 length(stored_names)]);
-                            current_card = stored_names(index_stored_names);
-                            disp(current_card);
+           loose_cards(end+1) = current_card;
+           index_stored_names = randi([1 length(stored_names)]);
+           current_card = stored_names(index_stored_names);
+           disp(current_card);
         
-                        elseif strcmp(txt, 'keep')
-                            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-                            x = input(prompt);
-                            discard_card = player_array_card_names_cell{current_player, x};
-                            loose_cards(end+1) = discard_card;
-                            player_array_card_names_cell{current_player, x} = current_card;
-                        elseif strcmp(txt, 'exit')
-                            return;
-                        end
+        elseif strcmp(txt, 'keep')
+            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
+            x = input(prompt);
+            discard_card = player_array_card_names_cell{current_player, x};
+            loose_cards(end+1) = discard_card;
+            player_array_card_names_cell{current_player, x} = current_card;
+        elseif strcmp(txt, 'exit')
+            return;
+        end
                end
         elseif strcmp(txt, 'exit')
             return;
@@ -231,33 +233,19 @@ while current_player <= n_players
                alleged_winner_cards = player_array_card_names_cell(current_player,:);
                for card = 1:length(alleged_winner_cards)
                    strs = strsplit(alleged_winner_cards{card}, ' ');
+                   disp(strs)
                    for index = 1:length(strs)
                     split_card_vec(index) = strs(index);
                    end
                    num_card_vec(end+1) = split_card_vec(1);
                end
+               disp(split_card_vec)
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
                else
-                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
-                    txt = input(prompt, 's');
-                    %conditional statement,if keep, then which card to remove
-                        if strcmp(txt, 'pass')
-                            loose_cards(end+1) = current_card;
-                            index_stored_names = randi([1 length(stored_names)]);
-                            current_card = stored_names(index_stored_names);
-                            disp(current_card);
-        
-                        elseif strcmp(txt, 'keep')
-                            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-                            x = input(prompt);
-                            discard_card = player_array_card_names_cell{current_player, x};
-                            loose_cards(end+1) = discard_card;
-                            player_array_card_names_cell{current_player, x} = current_card;
-                        elseif strcmp(txt, 'exit')
-                            return;
-                        end
+                   disp('Boy you know damn well you do not have four of a kind');
+                   break;
                end
             elseif strcmp(txt, 'exit')
                 return;
@@ -299,33 +287,19 @@ while current_player <= n_players
                alleged_winner_cards = player_array_card_names_cell(current_player,:);
                for card = 1:length(alleged_winner_cards)
                    strs = strsplit(alleged_winner_cards{card}, ' ');
+                   disp(strs)
                    for index = 1:length(strs)
                     split_card_vec(index) = strs(index);
                    end
                    num_card_vec(end+1) = split_card_vec(1);
                end
+               disp(split_card_vec)
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
                else
-                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
-                    txt = input(prompt, 's');
-                    %conditional statement,if keep, then which card to remove
-                        if strcmp(txt, 'pass')
-                            loose_cards(end+1) = current_card;
-                            index_stored_names = randi([1 length(stored_names)]);
-                            current_card = stored_names(index_stored_names);
-                            disp(current_card);
-        
-                        elseif strcmp(txt, 'keep')
-                            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-                            x = input(prompt);
-                            discard_card = player_array_card_names_cell{current_player, x};
-                            loose_cards(end+1) = discard_card;
-                            player_array_card_names_cell{current_player, x} = current_card;
-                        elseif strcmp(txt, 'exit')
-                            return;
-                        end
+                   disp('Boy you know damn well you do not have four of a kind, try again');
+                   break;
                end
             elseif strcmp(txt, 'exit')
                 return;
