@@ -187,7 +187,6 @@ while current_player <= n_players
                    num_card_vec(end+1) = split_card_vec(1);
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
-                   % player wins! game ends
                    prompt = 'Winner Winner Chicken Dinner ^_^!!';
                    winner = true;
                    return;
@@ -195,7 +194,6 @@ while current_player <= n_players
                else
                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
-                    %reprompt player to choose pass or keep
                         if strcmp(txt, 'pass')
                             loose_cards(end+1) = current_card;
                             index_stored_names = randi([1 length(stored_names)]);
@@ -255,14 +253,13 @@ while current_player <= n_players
                    num_card_vec(end+1) = split_card_vec(1);
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
-                   % player wins! game ends
                    winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!!');
                    return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
-                    %reprompt player to choose pass or keep
+                    %conditional statement,if keep,pass, or spoons
                         if strcmp(txt, 'pass')
                             loose_cards(end+1) = current_card;
                             index_stored_names = randi([1 length(stored_names)]);
@@ -325,14 +322,13 @@ while current_player <= n_players
                    num_card_vec(end+1) = split_card_vec(1);
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
-                   % player wins! game ends
                    winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!!');
                    return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
-                    %reprompt player to choose pass or keep
+                    %conditional statement,if keep, then which card to remove
                         if strcmp(txt, 'pass')
                             loose_cards(end+1) = current_card;
                             index_stored_names = randi([1 length(stored_names)]);
@@ -359,8 +355,7 @@ while current_player <= n_players
           %start cycle over   
         current_player = 1;
     end
-    % when pile player 1 is drawing from is empty, they start drawing from
-    % discard pile
+    % when pile player 1
     if size(index_stored_names) == 0
         index_stored_names = discard_pile;
         discard_pile = strings(0);
