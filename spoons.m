@@ -170,9 +170,14 @@ while current_player <= n_players
                    num_card_vec(end+1) = split_card_vec(1);
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
-                   winner = true;
-                   disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
-                   disp('Type exit to start the game again!');
+                   prompt = 'Winner Winner Chicken Dinner ^_^!! Please type exit to start the game over';
+                   txt = input(prompt, 's');
+                   if strcmp(txt, 'exit')
+                       return;
+                   else
+                       return;
+                   end
+                   
                else
                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
@@ -238,7 +243,7 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
-                   disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
+                   disp('Winner Winner Chicken Dinner ^_^!! player 2');
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
@@ -306,7 +311,7 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
-                   disp('Winner Winner Chicken Dinner ^_^!! Please type exit and start this game with n_players - 1');
+                   disp('Winner Winner Chicken Dinner ^_^!! test');
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
