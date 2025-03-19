@@ -171,12 +171,7 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    prompt = 'Winner Winner Chicken Dinner ^_^!! Please type exit to start the game over';
-                   txt = input(prompt, 's');
-                   if strcmp(txt, 'exit')
-                       return;
-                   else
-                       return;
-                   end
+                   return;
                    
                else
                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
@@ -243,7 +238,8 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
-                   disp('Winner Winner Chicken Dinner ^_^!! player 2');
+                   disp('Winner Winner Chicken Dinner ^_^!!');
+                   return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
@@ -311,7 +307,8 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    winner = true;
-                   disp('Winner Winner Chicken Dinner ^_^!! test');
+                   disp('Winner Winner Chicken Dinner ^_^!!');
+                   return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
                     txt = input(prompt, 's');
