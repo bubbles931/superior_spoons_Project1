@@ -1,12 +1,22 @@
-%To begin playing and to see instuctions, type spoons() and the number of
+%READ THIS BEFORE PLAYING THE GAME:
+% To begin playing and to see instuctions, type spoons() and the number of
 %players inside of the parentheses. Ex: spoons(2), or spoons(3)
+
+
+
+
+
+
+
 function [winner] = spoons(n_players);
 instructions = 'Welcome to our game called Spoons by... \nHannah Banana :3 \n     Bry Cry xD \n          Mick Rick ^_^\n';
 instructions2 = 'Spoons is a card game played with 2 or more players.\nThe objective of the game is to get four of a kind before everyone else.\n';
 instructions3 = 'During each round players start with four cards. \nOne player is designated as the dealer and draws from the deck of remaining cards.\nThe dealer will look at each card they draw and decide if they want to keep it in their hand and pass one of the cards they already have to the player to their left, \nor pass the card drawn on to the next player.';
+instructions4 = '\n';
 fprintf(instructions)
 fprintf(instructions2)
 fprintf(instructions3)
+fprintf(instructions4)
 winner = false;
 
 % initializing deck of cards
@@ -134,9 +144,10 @@ while current_player <= n_players
         if isempty(stored_names)
             stored_names = discard_pile;
         end
+        fprintf('\n \n')
         curr_player = strcat("\nPlayer ", num2str(current_player), "'s Turn");
         fprintf(curr_player)
-        disp(": Current Hand");
+        fprintf('\n Current Hand')
         disp(strcat(player_array_card_names_cell(current_player,:)));
 %displaying a card to player 1
         index_stored_names = randi([1 length(stored_names)]);
@@ -152,8 +163,8 @@ while current_player <= n_players
            loose_cards(end+1) = current_card;
            index_stored_names = randi([1 length(stored_names)]);
            current_card = stored_names(index_stored_names);
-           disp(current_card)
-           fprintf('\n')
+           %disp(current_card);
+           fprintf('\n \n \n')
         
         elseif strcmp(txt, 'keep')
             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
@@ -161,6 +172,7 @@ while current_player <= n_players
             discard_card = player_array_card_names_cell{current_player, x};
             loose_cards(end+1) = discard_card;
             player_array_card_names_cell{current_player, x} = current_card;
+            fprintf('\n \n \n')
          
                 %swap current card to loose card, loose card goes into
                 %loose_card; update player_array
@@ -221,6 +233,7 @@ while current_player <= n_players
            %conditional statement,if keep, then which card to remove
             if strcmp(txt, 'pass')
                 loose_cards(end+1) = current_card;
+                fprintf('\n \n \n')
                 %current_player = current_player +1; 
             elseif strcmp(txt, 'keep')
                 prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
@@ -231,6 +244,7 @@ while current_player <= n_players
                     %swap current card to loose card, loose card goes into
                     %loose_card; update player_array
                 disp(player_array_card_names_cell)
+                fprintf('\n \n \n')
                 %current_player = current_player +1; 
             elseif strcmp(txt, 'spoons')
                alleged_winner_cards = player_array_card_names_cell(current_player,:);
