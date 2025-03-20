@@ -197,7 +197,6 @@ while current_player <= n_players
                             loose_cards(end+1) = current_card;
                             index_stored_names = randi([1 length(stored_names)]);
                             current_card = stored_names(index_stored_names);
-                            disp(current_card);
         
                         elseif strcmp(txt, 'keep')
                             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
