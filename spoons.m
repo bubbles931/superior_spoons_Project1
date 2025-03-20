@@ -186,27 +186,15 @@ while current_player <= n_players
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    % player wins! game ends
                    prompt = 'Winner Winner Chicken Dinner ^_^!!';
+                   disp(prompt);
                    winner = true;
                    return;
-                   
                else
-                   prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
-                    txt = input(prompt, 's');
-                    %reprompt player to choose pass or keep
-                        if strcmp(txt, 'pass')
-                            loose_cards(end+1) = current_card;
-                            index_stored_names = randi([1 length(stored_names)]);
-                            current_card = stored_names(index_stored_names);
-        
-                        elseif strcmp(txt, 'keep')
-                            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-                            x = input(prompt);
-                            discard_card = player_array_card_names_cell{current_player, x};
-                            loose_cards(end+1) = discard_card;
-                            player_array_card_names_cell{current_player, x} = current_card;
-                        elseif strcmp(txt, 'exit')
-                            return;
-                        end
+                   %player incorrectly puts in spoons, your time ends here
+                   %cheater
+                   prompt ='Boy you know damn well you do not have four of a kind, start over cheater cheater bacon eater';
+                   disp(prompt)
+                   return
                end
         elseif strcmp(txt, 'exit')
             return;
@@ -257,23 +245,11 @@ while current_player <= n_players
                    ('Winner Winner Chicken Dinner ^_^!!');
                    return;
                else
-                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
-                    txt = input(prompt, 's');
-                    %reprompt player to choose pass or keep
-                        if strcmp(txt, 'pass')
-                            loose_cards(end+1) = current_card;
-                            index_stored_names = randi([1 length(stored_names)]);
-                            current_card = stored_names(index_stored_names);
-        
-                        elseif strcmp(txt, 'keep')
-                            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-                            x = input(prompt);
-                            discard_card = player_array_card_names_cell{current_player, x};
-                            loose_cards(end+1) = discard_card;
-                            player_array_card_names_cell{current_player, x} = current_card;
-                        elseif strcmp(txt, 'exit')
-                            return;
-                        end
+                   %player incorrectly puts in spoons, your time ends here
+                   %cheater
+                   prompt ='Boy you know damn well you do not have four of a kind, start over cheater cheater bacon eater';
+                   disp(prompt)
+                   return
                end
             elseif strcmp(txt, 'exit')
                 return;
@@ -325,23 +301,11 @@ while current_player <= n_players
                    winner = true;
                    return;
                else
-                    prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
-                    txt = input(prompt, 's');
-                    %reprompt player to choose pass or keep
-                        if strcmp(txt, 'pass')
-                            loose_cards(end+1) = current_card;
-                            index_stored_names = randi([1 length(stored_names)]);
-                            current_card = stored_names(index_stored_names);
-        
-                        elseif strcmp(txt, 'keep')
-                            prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
-                            x = input(prompt);
-                            discard_card = player_array_card_names_cell{current_player, x};
-                            loose_cards(end+1) = discard_card;
-                            player_array_card_names_cell{current_player, x} = current_card;
-                        elseif strcmp(txt, 'exit')
-                            return;
-                        end
+                   %player incorrectly puts in spoons, your time ends here
+                   %cheater
+                   prompt ='Boy you know damn well you do not have four of a kind, start over cheater cheater bacon eater';
+                   disp(prompt)
+                   return
                end
             elseif strcmp(txt, 'exit')
                 return;
