@@ -195,12 +195,8 @@ while current_player <= n_players
                     %reprompt player to choose pass or keep
                         if strcmp(txt, 'pass')
                             loose_cards(end+1) = current_card;
-                            disp('run')
                             index_stored_names = randi([1 length(stored_names)]);
-                            disp('running')
                             current_card = stored_names(index_stored_names);
-                            disp(current_card);
-                            disp("plyer" + num2str(current_player))
         
                         elseif strcmp(txt, 'keep')
                             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
@@ -268,7 +264,6 @@ while current_player <= n_players
                             loose_cards(end+1) = current_card;
                             index_stored_names = randi([1 length(stored_names)]);
                             current_card = stored_names(index_stored_names);
-                            disp(current_card);
         
                         elseif strcmp(txt, 'keep')
                             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';
@@ -324,10 +319,10 @@ while current_player <= n_players
                    end
                    num_card_vec(end+1) = split_card_vec(1);
                end
-               if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
+               if num_card_vec(1) == num_card_vec(2 && num_card_vec{2} == num_card_vec{3} &&  num_card_vec{3} == num_card_vec{4}
                    % player wins! game ends
-                   winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!!');
+                   winner = true;
                    return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
@@ -337,7 +332,6 @@ while current_player <= n_players
                             loose_cards(end+1) = current_card;
                             index_stored_names = randi([1 length(stored_names)]);
                             current_card = stored_names(index_stored_names);
-                            disp(current_card);
         
                         elseif strcmp(txt, 'keep')
                             prompt = 'Which card would you like to discard: 1, 2, 3, or 4?';

@@ -321,8 +321,8 @@ while current_player <= n_players
                end
                if num_card_vec(1) == num_card_vec(2) && num_card_vec(2) == num_card_vec(3) &&  num_card_vec(3) == num_card_vec(4)
                    % player wins! game ends
-                   winner = true;
                    disp('Winner Winner Chicken Dinner ^_^!!');
+                   winner = true;
                    return;
                else
                     prompt ='Boy you know damn well you do not have four of a kind, either pass or keep.';
